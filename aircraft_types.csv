@@ -1,0 +1,51 @@
+Manufacturer;Aircraft Type;ICAO;Variants;Units Built;First Flight
+Boeing;747-400;B744;747-400, -400F, -400D, -400M, -400ER/-ERF;694;1988-04-29
+Boeing;747-8;B748;747-8F, 747-8I;155;2010-02-08
+Airbus;A-380-800;A388;A380-800;254;2005-04-27
+Airbus;A340-600;A346;A340-600;97;2001-04-23
+Airbus;A340-300;A343;A340-300, A340-300E;218;1991-10-25
+Boeing;757-200;B752;757-200, -200M, -200PF;913;1982-02-19
+Boeing;767-300;B763;767-300, -300ER, -300F;More than 1,000;1986-01-30
+McDonnell Douglas;MD-11;MD11;MD-11, MD-11F, MD-11CF, MD-11ER;200;1990-01-10
+Airbus;A300;A30B / A306;A300B2/B4, A300-600/-600F;561;1972-10-28
+Airbus;A310;A310;A310-200, A310-300;255;1982-04-03
+McDonnell Douglas;DC-10;DC10;"DC-10-10/-15/-30/-40; KC-10";386;1970-08-29
+Lockheed;L-1011 TriStar;L101;L-1011-1/-100/-200/-250/-500;250;1970-11-16
+Boeing;727-200;B722;727-200, -200 Advanced, -200F;1260;1967-07-27
+Boeing;707;B701 / B703;"707-120/-320/-320B/-320C; C-137";865;1957-12-20
+Douglas;DC-8;DC81–DC87;DC-8 Series 10/20/30/40/50/60/70;556;1958-05-30
+Douglas;DC-9;DC91–DC95;"DC-9-10/-20/-30/-40/-50; C-9";976;1965-02-25
+McDonnell Douglas;MD-80;MD81 / MD82 / MD83 / MD87 / MD88;MD-81/-82/-83/-87/-88;1191;1979-10-18
+McDonnell Douglas;MD-90;MD90;MD-90-30/-30ER;116;1993-02-22
+British Aerospace / Avro;BAe 146 / Avro RJ;B461 / B462 / B463 / RJ70 / RJ85 / RJ1H;"BAe 146-100/-200/-300; Avro RJ70/85/100";394;1981-09-03
+Fokker;100;F100;"Fokker 100; Fokker 100EJ";283;1986-11-30
+Fokker;70;F70;Fokker 70;47;1993-04-04
+Saab;340;SF34;Saab 340A/340B;459;1983-01-25
+De Havilland Canada;Dash 7;DHC7;Dash 7 Series 100/101/102/103/150;113;1975-03-27
+Lockheed;L-188 Electra;L188;L-188A/L-188C;170;1957-12-06
+Convair;580;CVLT;CV-580, CV-5800;181 conversions;1960-01-19
+Douglas;DC-6;DC6;"DC-6/-6A/-6B/-6C; C-118";704;1946-02-15
+Douglas;DC-4 / C-54;DC4;DC-4, C-54, R5D, Canadair North Star;1241;1942-02-14
+Douglas;DC-3 / C-47 Dakota;DC3;DC-3, C-47/C-53/R4D/Dakota/Li-2/L2D;More than 13,000;1935-12-17
+Curtiss;C-46 Commando;C46;C-46A/D/F/R;3181;1940-03-26
+Lockheed;Constellation / Super Constellation;CONI;L-049/L-649/L-749/L-1049/L-1649;856;1943-01-09
+Junkers;Ju 52;JU52;Ju 52/1m, Ju 52/3m;4845;1932-03-07
+Ford;Trimotor;TRIM;Ford 4-AT, 5-AT;199;1926-06-11
+Boeing;377 Stratocruiser;B377;377-10 variants;56;1947-07-08
+De Havilland;Comet;COMT;Comet 1/2/3/4/4B/4C;114;1949-07-27
+Sud Aviation;Caravelle;S210;Caravelle I/III/VI/10B/10R/11R/12;282;1955-05-27
+Vickers;VC10;VC10;"Standard VC10, Super VC10; C.1/K.3/K.4";54;1962-06-29
+Aérospatiale / BAC;Concorde;CONC;Prototypes, pre-production, production;20;1969-03-02
+Tupolev;Tu-144;T144;Tu-144, Tu-144S, Tu-144D, Tu-144LL;16;1968-12-31
+Antonov;An-2;AN2;An-2, An-2T/R/V, An-3;More than 18,000;1947-08-31
+Antonov;An-12;AN12;An-12A/B/BP/BK;1248;1957-12-16
+Boeing;B-52 Stratofortress;B52;B-52A/B/C/D/E/F/G/H;744;1952-04-15
+Rockwell;B-1B Lancer;B1;B-1B;100;1984-10-18
+Northrop;B-2 Spirit;B2;B-2A Block 10/20/30;21;1989-07-17
+McDonnell Douglas;F-4 Phantom II;F4;"F-4B/C/D/E/J/K/M; RF-4; F-4F/G";5195;1958-05-27
+Lockheed;F-104 Starfighter;F104;"F-104A/B/C/D/F/G/J/S; CF-104";2578;1954-03-04
+Mikoyan-Gurevich;MiG-21;MG21;"MiG-21F/PF/PFM/MF/bis; UM";More than 11,000;1955-02-14
+English Electric;Lightning;LTNG;"P.1A/P.1B; F.1/F.2/F.3/F.6; T.4/T.5";337;1954-08-04
+Avro;Vulcan;VULC;Vulcan B.1/B.2/B.2MRR/K.2;136;1952-08-30
+De Havilland;Mosquito;MOSQ;Mosquito B/FB/NF/PR/T variants;7781;1940-11-24
+Avro;Lancaster;LANC;Lancaster B.I/B.III/B.X;7377;1941-01-09
