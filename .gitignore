@@ -1,3 +1,4 @@
 .env
 .idea
 database.ini
+/FAA_data
