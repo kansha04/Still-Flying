@@ -6,7 +6,8 @@ CREATE TABLE aircraft_types (
     manufacturer TEXT NOT NULL,
     model TEXT NOT NULL,
     variant TEXT,
-    icao_type_code TEXT
+    icao_type_code TEXT,
+    CONSTRAINT unique_manufacturer_model UNIQUE(manufacturer, model)
 );
 
 CREATE TABLE operators (
@@ -27,7 +28,6 @@ CREATE TABLE airframes (
     icao24_hex VARCHAR(6),
     serial_number TEXT,
     built_date DATE,
-
     CONSTRAINT fk_airframe_type
         FOREIGN KEY (type_id)
         REFERENCES aircraft_types(id),
@@ -35,7 +35,6 @@ CREATE TABLE airframes (
     CONSTRAINT fk_airframe_operator
         FOREIGN KEY (operator_id)
         REFERENCES operators(id)
-
 );
 
 CREATE TABLE status_events (
