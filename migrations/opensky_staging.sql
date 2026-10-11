@@ -1,0 +1,38 @@
+DROP TABLE IF EXISTS raw_opensky_aircraft;
+-- Store all data as TEXT to minimize pipeline failures due to unexpected blanks or invalid date formats
+
+CREATE TABLE raw_opensky_aircraft (
+    icao24 TEXT,
+    timestamp TEXT,
+    acars TEXT,
+    adsb TEXT,
+    built TEXT,
+    category_description TEXT,
+    country TEXT,
+    engines TEXT,
+    first_flight_date TEXT,
+    first_seen TEXT,
+    icao_aircraft_class TEXT,
+    line_number TEXT,
+    manufacturer_icao TEXT,
+    manufacturer_name TEXT,
+    model TEXT,
+    modes TEXT,
+    next_reg TEXT,
+    notes TEXT,
+    operator TEXT,
+    operator_callsign TEXT,
+    operator_iata TEXT,
+    operator_icao TEXT,
+    owner TEXT,
+    prev_reg TEXT,
+    reg_until TEXT,
+    registered TEXT,
+    registration TEXT,
+    sel_cal TEXT,
+    serial_number TEXT,
+    status TEXT,
+    typecode TEXT,
+    vdl TEXT,
+    loaded_at TIMESTAMPTZ DEFAULT NOW()
+);

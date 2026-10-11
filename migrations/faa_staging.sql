@@ -56,3 +56,13 @@ CREATE TABLE raw_faa_acftref (
                                  tc_data_holder TEXT,
                                  loaded_at TIMESTAMPTZ DEFAULT NOW() -- save as current time
 );
+
+
+SELECT
+    m.n_number,
+    r.mfr AS manufacturer,
+    r.model,
+    r.type_acft
+FROM raw_faa_master m
+         JOIN raw_faa_acftref r
+              ON TRIM(m.mfr_mdl_code) = TRIM(r.code);
