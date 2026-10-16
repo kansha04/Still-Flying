@@ -1,4 +1,8 @@
 .env
 .idea
 database.ini
-/FAA_data
+
+# Raw source data (download separately, see README)
+/FAA_data/
+*.csv
+!aircraft_types.csv
