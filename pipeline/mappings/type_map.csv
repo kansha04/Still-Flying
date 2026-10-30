@@ -1,0 +1,26 @@
+source,raw_mfr,raw_mdl,type_code,variant,notes
+faa,MCDONNELL DOUGLAS,DC-10-10,DC10,DC-10-10,standard domestic version
+faa,MCDONNELL-DOUGLAS,DC-10-10F,DC10,DC-10-10F,freighter
+opensky,MCDONNELL DOUGLAS,DC-10-30,DC10,DC-10-30
+faa,DOUGLAS,DC-10-40,DC10,DC-10-40,similar to -30 but different engines
+opensky,DOUGLAS,DC-10-40,DC10,DC-10-40
+faa,DOUGLAS,DC-10-40F,DC10,DC-10-40F,freighter
+faa,MCDONNELL-DOUGLAS,DC-10-30,DC10,DC-10-30,intercontinental version
+faa,DOUGLAS,DC-10-30F,DC10,DC-10-30F,freighter
+faa,MCDONNELL DOUGLAS,DC-10-30F,DC10,DC-10-30F,freighter
+opensky,MCDONNELL DOUGLAS,DC-10-30 /F,DC10,DC-10-30F,freighter
+opensky,DOUGLAS,DC-10 30F,DC10,DC-10-30F,freighter
+faa,MCDONNELL DOUGLAS CORP,DC-10-30F (KDC10),DC10,KDC-10,converted second-hand commercial airliners modified into tankers
+opensky,DOUGLAS,DC-10 KDC-10,DC10,KDC-10,RNLAF
+opensky,DOUGLAS,DOUGLAS DC-10 KDC-10,DC10,KDC-10,RNLAF
+faa,MCDONNELL DOUGLAS,DC-10-30CF,DC10,DC-10-30CF,dual purpose (freighter + passengers)
+faa,MCDONNELL DOUGLAS,DC-10-15,DC10,DC-10-15,designed for extreme airport conditions
+faa,DOUGLAS,DC-10-10CF,DC10,DC-10-10CF,similar to -30CF but execution was scaled down
+faa,MCDONNELL DOUGLAS CORP,DC-10-20,DC10,DC-10-20,the exact same plane as the -40
+opensky,MCDONNELL DOUGLAS,MD-10-10F,DC10,MD-10-10F,modernized upgrade of the DC10 airframe + freighter
+faa,MCDONNELL DOUGLAS,MD-10-10F,DC10,MD-10-10F
+opensky,MCDONNELL DOUGLAS,MD-10-30F,DC10,MD-10-30F,better engines and more higher freight capacity over the -10 variant
+opensky,MCDONNELL DOUGLAS,KC-10A Extender,DC10,KC-10A,Air tanker built for the US military
+opensky,DOUGLAS,DOUGLAS KC-10A Extender,DC10,KC-10A,
+faa,BOEING,727-100,B721,727-100
+faa,BOEING,727-100C,B721,727-100C,dual purpose (freighter + passengers)

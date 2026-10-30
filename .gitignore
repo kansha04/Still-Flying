@@ -1,8 +1,11 @@
 .env
 .idea
 database.ini
+.DS_Store
 
 # Raw source data (download separately, see README)
 /FAA_data/
 *.csv
 !aircraft_types.csv
+!pipeline/mappings/*.csv
+

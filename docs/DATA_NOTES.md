@@ -26,3 +26,20 @@ In `raw_opensky_aircraft`, the 747-200 follows the same naming convention as the
 
 > [!note] ICAO24 Hex Addresses
 > In the `raw_opensky_aircraft` database these are found under the `icao24` columns and are always in lowercase (ex. a0bef1) however in the FAA databases these are found under the column `mode_s_code_hex` and are all in uppercase (ex. A0BEF1). This is likely a source-format convention. When doing PostgresQL JOINs will be best to standardize lowercase.
+
+## Record Counts by Hero Type
+
+Counts queried from `raw_opensky_aircraft` (by typecode), `raw_faa_master` (active registrations), and `raw_faa_dereg` (deregistered records).
+
+| Hero Type         | Typecode / Filter          | OpenSky | FAA Master (active) | FAA Dereg |
+|-------------------|----------------------------|--------:|--------------------:|----------:|
+| McDonnell Douglas DC-10   | `DC10`              |     149 |                  26 |       258 |
+| Boeing 727        | `B722`                     |     109 |                  37 |     1,571 |
+| Airbus A310       | `A310`                     |     103 |                   4 |       109 |
+| Vickers VC10      | model ILIKE `VC10%`        |       4 |                   0 |         0 |
+| Mikoyan MiG-21    | `MG21`                     |      29 |                  23 |        21 |
+| Lockheed L-1011 TriStar | `L101`             |       7 |                   4 |       187 |
+| Boeing 747-200    | `B742`                     |      56 |                   7 |       238 |
+
+> [!note] Exceptions
+Vickers VC10 has no FAA records as these are UK-registered military aircraft. MiG-21 FAA counts use model name matching (`MIG 21%` / `MIG-21%`) across `raw_faa_acftref`.*

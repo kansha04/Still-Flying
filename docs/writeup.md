@@ -20,14 +20,47 @@ The bigger piece was the FAA Releasable Aircraft Registry. I set up a **staging 
 
 I also began exploring the staged OpenSky data for my "hero" types, the DC-10, the 727 and the A310, to see how they actually show up in the raw data (model naming, type codes, missing build years). Those notes are in [`DATA_NOTES.md`](DATA_NOTES.md) and will feed the matching rules for the transform step.
 
+**Day 7-9** I started working on a mapping table to match the FAA data to the OpenSky data. I took an approach of hand-writing each model string to map them into the `aircraft_types` table (`pipeline/mappings/type_map.csv`).
+The problem this solves is the FAA staging data has a lot of variation in the model names, for example:
+```
+MCDONNELL DOUGLAS  DC-10-10
+MCDONNELL DOUGLAS  DC-10-30F
+MCDONNELL DOUGLAS  DC-10-40
+BOEING             DC-10-30
+MCDONNELL DOUGLAS  MD-10-10F
+LOCKHEED           L-1011-385-1
+LOCKHEED           L-1011-385-3
+```
+A model might be part of a family, but using a simple string match is not enough. In this case an MD-10 is a converted DC-10. Another thing I noticed when mapping the DC-10 was that in the OpenSky data, many KC-10s (military air tankers) were still listed under the Air Mobility Command even though the USAF retired the plane in 2024. Understandably the data was from 2020 so the registries lagging behind is a problem that I hope to fix with ADS-B data down the line.
+
+Another issue was Boeing. Boeing names their models like let’s say the 727-100 or 727-200 with a customer code and feature code as referenced in `DATA_NOTES.md`. This means a Boeing 727-100 could be listed as `727-22` (a 727-100 built for United Airlines), or a 727-200 could appear as `727-225` (built for Eastern Airlines), often appended with modifiers like `RE` (re-engined) or `W` (winglets). On the 747-200, strings vary between spaces and hyphens (`747 251B` vs `747-251B`), and some records have blank model strings entirely.
+
+To make the data reliable, I expanded the research in [`DATA_NOTES.md`](DATA_NOTES.md) across seven "hero" aircraft types:
+1. **McDonnell Douglas DC-10** (149 in OpenSky, 26 active FAA, 258 FAA deregistered)
+2. **Boeing 727** (109 in OpenSky, 37 active FAA, 1,571 FAA deregistered)
+3. **Airbus A310** (103 in OpenSky, 4 active FAA, 109 FAA deregistered)
+4. **Vickers VC10** (4 in OpenSky, 0 FAA — UK military airframes)
+5. **Mikoyan MiG-21** (29 in OpenSky, 23 active FAA, 21 FAA deregistered)
+6. **Lockheed L-1011 TriStar** (7 in OpenSky, 4 active FAA, 187 FAA deregistered)
+7. **Boeing 747-200** (56 in OpenSky, 7 active FAA, 238 FAA deregistered)
+
+Looking at these counts highlighted just how vital the `DEREG` data is: for types like the 727, L-1011, and 747-200, the vast majority of historical airframes exist exclusively in deregistration records. I also documented key cross-source quirks, such as ICAO24 hex addresses being lowercase in OpenSky (`icao24`) and uppercase in FAA (`mode_s_code_hex`), as well as pervasive missing fields in OpenSky (such as ~73% missing `built` dates).
+
+The curated mapping in `pipeline/mappings/type_map.csv` now maps raw manufacturer and model strings from both sources directly to normalized `type_code` and `variant` labels, forming the backbone for the upcoming transform pipeline.
+
 ## Where things stand
+
 **Built so far:**
-- Core schema: `aircraft_types`, `operators`, `airframes`, `status_events`
-- 50 curated aircraft types, seeded into `aircraft_types`
-- Staging tables and loaders for FAA `MASTER`, `ACFTREF` and `DEREG`, and the OpenSky aircraft database
+- **Core schema**: `aircraft_types`, `operators`, `airframes`, `status_events` defined in Postgres with proper indexing.
+- **Seeded aircraft types**: 50 curated historical types seeded via `seed_aircraft_types.py`.
+- **FAA staging pipeline**: Automated staging tables and loaders for `MASTER`, `ACFTREF`, and `DEREG` (`faa_staging.py`, `dereg_staging.py`).
+- **OpenSky staging pipeline**: Complete staging table and batch loader for global aircraft records (`opensky_staging.py`).
+- **Data analysis & notes**: Detailed breakdown of 7 hero types in `docs/DATA_NOTES.md`, including record counts across active and deregistered sets, known quirks, and identifier casing conventions.
+- **Type mapping table**: Initial lookup table in `pipeline/mappings/type_map.csv` linking messy raw model strings to canonical aircraft types and variants.
 
 **Next up:**
-- The transform step (`pipeline/`): match the staged records to my aircraft types, then fill `operators`, `airframes` and `status_events`
-- Deciding how to handle aircraft that appear in both the FAA and OpenSky data
-- A website (`web/`) where people can search a type and see which airframes still exist
-
+- Complete mapping coverage for the remaining variants of the hero types.
+- Build the transform pipeline (`pipeline/`) to populate `operators`, `airframes`, and `status_events` from the staging tables.
+- Implement deduplication and reconciliation logic for airframes appearing across both FAA and OpenSky databases.
+- Develop the web UI (`web/`) to allow users to search for an aircraft type and track surviving airframes.
+ 

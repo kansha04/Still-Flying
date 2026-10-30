@@ -7,7 +7,7 @@ The main purpose of this project is to showcase the history of aviation and help
 
 ## Project status
 
-The project is in the **data ingestion** phase. Raw data from the FAA and OpenSky is being loaded into Postgres staging tables; the step that turns that raw data into the final airframe/operator/status tables, and the website on top of it, have not been built yet.
+The project has completed the initial **data ingestion** phase (FAA active registrations, FAA deregistered records, and OpenSky aircraft datasets staged in Postgres) and is currently in the **data mapping & normalization** phase. Staged raw records are being analyzed and mapped into standardized aircraft types and variants before building the transform pipeline that will populate the core tables.
 
 | Area | Status |
 | --- | --- |
@@ -15,9 +15,10 @@ The project is in the **data ingestion** phase. Raw data from the FAA and OpenSk
 | Curated list of 50 aircraft types + seeding script | Done |
 | FAA registry staging (`MASTER`, `ACFTREF`) | Done |
 | OpenSky aircraft database staging | Done |
-| FAA deregistered aircraft staging (`DEREG`) | In progress (not yet committed) |
-| Data exploration notes on "hero" types (DC-10, 727, A310) | In progress |
-| Transform staging → core tables (`pipeline/`) | Planned |
+| FAA deregistered aircraft staging (`DEREG`) | Done |
+| Data exploration notes on 7 "hero" types & quirks ([`DATA_NOTES.md`](docs/DATA_NOTES.md)) | Done |
+| Model mapping dictionary ([`pipeline/mappings/type_map.csv`](pipeline/mappings/type_map.csv)) | In progress |
+| Transform staging → core tables (`pipeline/`) | Next up |
 | Website / search UI (`web/`) | Planned |
 
 ## Architecture
@@ -34,7 +35,7 @@ The project is in the **data ingestion** phase. Raw data from the FAA and OpenSk
  │   raw_faa_master                                       aircraft_types  ◀── seeded
  │   raw_faa_acftref                                      operators           │
  │   raw_faa_dereg                                        airframes           │
- │   raw_opensky_aircraft        ── (planned transform) ▶ status_events       │
+ │   raw_opensky_aircraft        ── (pipeline/ & type_map) ▶ status_events    │
  └────────────────────────────────────────────────────────────────────────────┘
                                                               │
                                                      (planned) web UI
@@ -79,18 +80,21 @@ seed_aircraft_types.py    # loads aircraft_types.csv into aircraft_types
 faa_staging.py            # loads MASTER + ACFTREF into raw_faa_* tables
 opensky_staging.py        # loads the OpenSky CSV into raw_opensky_aircraft
 dereg_staging.py          # loads DEREG into raw_faa_dereg
+pipeline/
+  mappings/
+    type_map.csv          # maps raw FAA/OpenSky models to canonical type codes & variants
 migrations/
   initial_schema.sql      # core tables + indexes
   faa_staging.sql         # raw_faa_master, raw_faa_acftref
   opensky_staging.sql     # raw_opensky_aircraft
   dereg_staging.sql       # raw_faa_dereg
-  test script.sql         # scratch query
+  test script.sql         # exploration / scratch queries (e.g. 727 model patterns)
 queries/
   faa_master_acftref_join.sql  # reference join of MASTER to ACFTREF (run manually)
 docs/
   writeup.md              # day-by-day project write-up
-  DATA_NOTES.md           # notes on how hero types appear in the raw data
-pipeline/, web/           # empty, reserved for the transform step and the website
+  DATA_NOTES.md           # notes on 7 hero types, record counts, and raw data quirks
+web/                      # reserved for the web UI / search app
 ```
 
 ## Running it
